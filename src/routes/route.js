@@ -84,11 +84,11 @@ router.get('/movies/:id', (req,res) =>{
                 // ************* Task-2 && Task-3 ****************
     if(id > moviesArr.length-1)
     {
-        res.send(`Sorry Result Not Found Please Enter A Valid Id between <h3>" 0 to ${moviesArr.length -1} "</h3>`);
+        res.send(`Sorry Result Not Found Please Enter A Valid Id between " 0 to ${moviesArr.length -1} "`);
     }
     else
     {
-        res.send(`<h3>${JSON.stringify(moviesArr[id])}</h3>`)
+        res.send(moviesArr[id])
     }
 })
 
@@ -123,11 +123,11 @@ router.get('/films/:filmId', (req,res)=>{
     let filmId = req.params.filmId;
     if(filmId <= movieObj.length - 1)
     {
-        res.send(`<h2>${JSON.stringify(movieObj[filmId])}</h2>`)
+        res.send(movieObj[filmId])
     }
     else
     {
-        res.send(`No movie exists with this id Please Enter Id Between <h2>" 0 to ${movieObj.length -1} " </h2>`);
+        res.send(`No movie exists with this id Please Enter Id Between " 0 to ${movieObj.length -1} " `);
     }
 })
 
