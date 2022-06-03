@@ -1,6 +1,38 @@
 const express = require('express');
 const router = express.Router();
 
+
+let players =
+   [
+       {
+           "name": "manish",
+           "dob": "1/1/1995",
+           "gender": "male",
+           "city": "jalandhar",
+           "sports": [
+               "swimming"
+           ]
+       },
+       {
+           "name": "gopal",
+           "dob": "1/09/1995",
+           "gender": "male",
+           "city": "delhi",
+           "sports": [
+               "soccer"
+           ],
+       },
+       {
+           "name": "lokesh",
+           "dob": "1/1/1990",
+           "gender": "male",
+           "city": "mumbai",
+           "sports": [
+               "soccer"
+           ],
+       },
+   ]
+
 router.get('/students/:name', function(req, res) {
     let studentName = req.params.name
     console.log(studentName)
@@ -68,6 +100,26 @@ router.post("/test-post-4", function(req, res) {
     let ele= req.body.element
     arr.push(ele)
     res.send(  { msg: arr , status: true }  )
+})
+
+router.post('/players', (req, res) =>{
+    let player = req.body;
+    let playerName = player.name;
+
+    players.map((ele)=>{
+
+        if(ele.name === playerName)
+        {
+            res.send(`${playerName}  is already exist please create a new player info` )
+        }
+        else
+        {
+            players.push(player)
+            res.send( {data : players, status : true} )
+        }
+    })
+
+    
 })
 
 module.exports = router;
