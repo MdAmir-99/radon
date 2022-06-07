@@ -3,7 +3,7 @@ const res = require("express/lib/response")
 const BookModel= require("../models/bookModel")
 
 const createBook= async function (req, res) {
-    let data= req.body
+    let data = req.body
 
     let savedData= await BookModel.create(data)
     res.send({msg: savedData})
@@ -89,13 +89,13 @@ const bookList =  async (req, res) => {
 const getBooksInYear = async (req, res) => {
     let year = req.body.year;
 
-    let bookList = await BookModel.find({ year : {$eq : year}})
+    let bookList = await BookModel.find({ year :{$eq  : year}})
 
     res.send({msg : bookList})
 }
 
 
-// pending
+
 const getParticularBooks = async (req, res) => {
     let input = req.body;
     let bookList = await BookModel.find(input)
