@@ -16,7 +16,20 @@ mongoose.connect("mongodb+srv://functionup-cohort:G0Loxqc9wFEGyEeJ@cluster0.rzot
 
 app.use (
     function (req, res, next) {
-        console.log ("inside GLOBAL MW");
+        let timeStamp = Date.now();
+        let dateObj = new Date(timeStamp)
+        let date = dateObj.getDate();
+        let month = dateObj.getMonth() + 1;
+        let year = dateObj.getFullYear();
+        let hours = dateObj.getHours();
+        let min = dateObj.getMinutes();
+        let seconds = dateObj.getSeconds();
+        let ip = req.ip;
+        let path = req.url;
+        // YYYY-MM-DD HH:MM:SS
+        console.log (`${year}-${month}-${date} ${hours}-${min}-${seconds}`);
+        console.log(ip);
+        console.log(path);
         next();
   }
   );

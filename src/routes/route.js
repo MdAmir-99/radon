@@ -10,6 +10,11 @@ router.get("/test-me", function (req, res) {
 })
 
 
+router.get('/demo', (req, res) => {
+    res.send("Demo for global middleware")
+})
+
+
 
 
 router.post("/createBook", BookController.createBook  )
